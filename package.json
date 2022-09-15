@@ -1,23 +1,30 @@
 {
-  "name": "paw",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jovianjr/paw.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jovianjr/paw/issues"
-  },
-  "homepage": "https://github.com/jovianjr/paw#readme",
-  "dependencies": {
-    "express": "^4.18.1"
-  }
+	"homepage": "https://github.com/jovianjr/paw#readme",
+	"name": "paw",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jovianjr/paw.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jovianjr/paw/issues"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.2",
+		"express": "^4.18.1",
+		"module-alias": "^2.2.2",
+		"mongoose": "^6.6.1"
+	},
+	"_moduleAliases": {
+		"@src": "src"
+	}
 }
