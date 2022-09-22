@@ -15,6 +15,10 @@ const artworkSchema = new mongoose.Schema(
 		artist: {
 			type: String,
 			required: true,
+		},
+		date_created: {
+			type: Date,
+			required: true,
 		}
 	},
 	{
