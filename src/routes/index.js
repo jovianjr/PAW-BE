@@ -1,3 +1,4 @@
 const AuthRouter = require('./Auth');
+const ArtworkRouter = require('./Artwork');
 
-module.exports = { AuthRouter };
+module.exports = { AuthRouter, ArtworkRouter };

@@ -5,8 +5,7 @@ const artworkSchema = new mongoose.Schema(
 	{
 		title: { type: String,required: true,},
 		img: {
-			data: Buffer,
-			contentType: String,
+			type: String,
 			required: true,
 		},
 		description: {
@@ -25,3 +24,5 @@ const artworkSchema = new mongoose.Schema(
 		timestamps: true,
 	}
 );
+
+module.exports = mongoose.model('Artwork', artworkSchema);
