@@ -18,6 +18,10 @@ const artworkSchema = new mongoose.Schema(
 		date_created: {
 			type: Date,
 			required: true,
+		},
+		user_id:{
+			type : mongoose.ObjectId,
+			required: true,
 		}
 	},
 	{
