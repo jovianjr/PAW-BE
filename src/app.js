@@ -8,9 +8,10 @@ const app = () => {
 	app.use(express.json());
 
 	// router
-	const { AuthRouter } = require('@src/routes');
+	const { AuthRouter, ArtworkRouter } = require('@src/routes');
 	app.get('/', LandingPage);
 	app.use('/auth', AuthRouter);
+	app.use('/artwork', ArtworkRouter);
 	app.use(authHandler);
 
 	// 404
