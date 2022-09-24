@@ -3,10 +3,10 @@ const router = express.Router();
 
 const {
 	getArtworkController,
-    findArtworkController
+    findArtworkByIdController
 } = require('@src/controllers/artwork');
 
 router.get('/', getArtworkController);
-router.get('/:artist', findArtworkController);
+router.get('/:id', findArtworkByIdController);
 
 module.exports = router;

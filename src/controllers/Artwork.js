@@ -9,7 +9,10 @@ const getArtworkController = async (req, res) => {
     res.send(findArtworkByArtist);
 }
 
-const findArtworkController = async (req,res) => {
-    
+const findArtworkByIdController = async (req,res) => {
+    const findArt = await Artwork.findById( req.params.id).exec();
+    res.send(findArt);
+
+
 }
-module.exports = {getArtworkController, findArtworkController};
+module.exports = {getArtworkController, findArtworkByIdController};
