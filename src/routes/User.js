@@ -3,10 +3,10 @@ const router = express.Router();
 
 const {
 	findUserController,
-    
+	findByUsernameController,
 } = require('@src/controllers/user');
 
-
-router.get('/:name', findUserController);
+router.get('/search/:name', findUserController);
+router.get('/:username', findByUsernameController);
 
 module.exports = router;
