@@ -9,7 +9,10 @@ const findArtworkController = async (req, res) => {
 	if (req.query.user_id) filter.user_id = req.query.user_id;
 
 	try {
-		const data = await Artwork.find(filter).sort(req.query.sort).exec();
+		const data = await Artwork.find(filter)
+			.select('title img artist date_created')
+			.sort(req.query.sort)
+			.exec();
 
 		return res.json({
 			message: 'success',

@@ -8,7 +8,7 @@ const findUserController = async (req, res) => {
 				$regex: req.params.name,
 				$options: 'i',
 			},
-		});
+		}).select('username name');
 
 		return res.json({
 			message: 'success',
