@@ -2,7 +2,6 @@ const cors = require('cors');
 const express = require('express');
 const { authHandler } = require('@src/middleware/auth');
 
-
 const app = () => {
 	const app = express();
 	app.use(cors());
@@ -10,12 +9,11 @@ const app = () => {
 
 	// router
 	const { AuthRouter, ArtworkRouter, UserRouter } = require('@src/routes');
+	app.use(authHandler);
 	app.get('/', LandingPage);
 	app.use('/auth', AuthRouter);
 	app.use('/artwork', ArtworkRouter);
 	app.use('/user', UserRouter);
-	app.use(authHandler);
-
 
 	// 404
 	app.use((req, res, next) => {
@@ -32,7 +30,7 @@ const app = () => {
 };
 
 const LandingPage = (req, res) => {
-	res.send('Selamat Datang Di PAW!');
+	res.send('Selamat Datang Di PAW kelompok 7!');
 };
 
 module.exports = { app };
