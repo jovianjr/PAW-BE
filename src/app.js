@@ -2,17 +2,20 @@ const cors = require('cors');
 const express = require('express');
 const { authHandler } = require('@src/middleware/auth');
 
+
 const app = () => {
 	const app = express();
 	app.use(cors());
 	app.use(express.json());
 
 	// router
-	const { AuthRouter, ArtworkRouter } = require('@src/routes');
+	const { AuthRouter, ArtworkRouter, UserRouter } = require('@src/routes');
 	app.get('/', LandingPage);
 	app.use('/auth', AuthRouter);
 	app.use('/artwork', ArtworkRouter);
+	app.use('/user', UserRouter);
 	app.use(authHandler);
+
 
 	// 404
 	app.use((req, res, next) => {
