@@ -19,4 +19,19 @@ const findUserController = async (req, res) => {
 	}
 };
 
-module.exports = { findUserController };
+const findByUsernameController = async (req, res) => {
+	try {
+		const data = await User.findOne({
+			username: req.params.username,
+		}).select('username name');
+
+		return res.json({
+			message: 'success',
+			data,
+		});
+	} catch (e) {
+		return sendError(res, 400, 'Something went wrong');
+	}
+};
+
+module.exports = { findUserController, findByUsernameController };
