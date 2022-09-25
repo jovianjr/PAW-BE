@@ -1,4 +1,5 @@
 const Artwork = require('@src/models/Artwork');
+const { sendError } = require('@src/helpers/response');
 
 const findArtworkController = async (req, res) => {
 	const filter = {};
@@ -7,16 +8,28 @@ const findArtworkController = async (req, res) => {
 	if (req.query.artist) filter.artist = req.query.artist;
 	if (req.query.user_id) filter.user_id = req.query.user_id;
 
-	const findArtworkByArtist = await Artwork.find(filter)
-		.sort(req.query.sort)
-		.exec();
+	try {
+		const data = await Artwork.find(filter).sort(req.query.sort).exec();
 
-	return res.send(findArtworkByArtist);
+		return res.json({
+			message: 'success',
+			data,
+		});
+	} catch (e) {
+		return sendError(res, 400, 'Something went wrong');
+	}
 };
 
 const findArtworkByIdController = async (req, res) => {
-	const findArt = await Artwork.findById(req.params.id).exec();
-	return res.send(findArt);
+	try {
+		const data = await Artwork.findById(req.params.id).exec();
+		return res.json({
+			message: 'success',
+			data,
+		});
+	} catch (e) {
+		return sendError(res, 400, 'Something went wrong');
+	}
 };
 
 module.exports = { findArtworkController, findArtworkByIdController };
