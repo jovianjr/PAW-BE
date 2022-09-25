@@ -1,12 +1,14 @@
 const User = require('@src/models/User');
 
 const findUserController = async (req, res) => {
-    const findUserController = await User.find().where('this.name.includes(name');
+	const findUserController = await User.find({
+		name: {
+			$regex: req.params.name,
+			$options: 'i',
+		},
+	});
 
-    console.log(findUserController)
-    res.send(findUserController);
-}
+	res.send(findUserController);
+};
 
-
-
-module.exports = {findUserController};
+module.exports = { findUserController };
