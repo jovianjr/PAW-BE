@@ -39,22 +39,7 @@ yarn
 yarn dev
 ```
 
-
-
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+## Anggota Kelompok 7
+Nama  | NIM
+------------- | -------------
+Alphonsus Jovian Joy Reynaldo  | 20/460539/TK/51128
