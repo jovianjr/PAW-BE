@@ -6,6 +6,23 @@ Simple overview of use/purpose.
 
 An in-depth paragraph about your project and overview of use.
 
+### Directories
+    .
+    ├── src                    
+    │   ├── config                # App Configuration
+    │   ├── controllers           # App Functionality
+    │   ├── helpers               # Useful utils
+    │   ├── middleware            # App middleware
+    │   ├── models                # DB Schema
+    │   ├── routes                # Express.js routes
+    │   └── app.js                # Main App Files
+    ├── index.js                # Server Files 
+    ├── package.json
+    └── README.md
+
+
+
+
 ## Getting Started
 
 ### Dependencies
