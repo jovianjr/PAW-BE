@@ -1,6 +1,11 @@
-# Project Title
+<h2 align="center">
+  Project Title
+</h2>
 
-Simple overview of use/purpose.
+<p align="center">
+  Simple overview of use/purpose.
+</p>
+
 
 ## Description
 
