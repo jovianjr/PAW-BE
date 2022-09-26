@@ -6,7 +6,10 @@ Simple overview of use/purpose.
 
 An in-depth paragraph about your project and overview of use.
 
-### Directories
+## API Documentation
+Please check [API References](https://documenter.getpostman.com/view/17403192/2s83Rwjb7c#1b444c49-cb52-48d0-a546-e70421c09cb5).
+
+## Directories
     .
     ├── src                    
     │   ├── config                # App Configuration
@@ -23,7 +26,20 @@ An in-depth paragraph about your project and overview of use.
 
 
 
-## Getting Started
+## How to use
+Don't forget to fill the .env files
+### npm
+```bash
+npm install
+npm run dev
+```
+### yarn
+```bash
+yarn
+yarn dev
+```
+
+
 
 ### Dependencies
 
