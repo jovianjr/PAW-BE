@@ -40,7 +40,7 @@ const findArtworkByIdController = async (req, res) => {
 // edit artwork
 const editArtworkController = async (req, res) => {
 	try {
-		const updatedPost = await artworkSchema.updateOne(
+		const updatedPost = await Artwork.updateOne(
 			{ _id: req.params.id },
 			{ $set: req.body }
 		);
@@ -52,11 +52,23 @@ const editArtworkController = async (req, res) => {
 
 // menambahkan data artwork
 const newArtworkController = async (req, res) => {
-	const artwork = new artworkSchema(req.body);
 	try {
+		const { title, description, artist, date_created, imgSrc } = req.body;
+		const artwork = new Artwork({
+			title,
+			description,
+			artist,
+			date_created,
+			imgSrc,
+			user_id: req.auth._id,
+		});
 		const savedArtwork = await artwork.save();
-		res.json(savedArtwork);
+		return res.status(201).json({
+			message: 'success',
+			savedArtwork,
+		});
 	} catch (err) {
+		console.log(err);
 		return sendError(res, 400, 'Something went wrong');
 	}
 };
@@ -64,7 +76,7 @@ const newArtworkController = async (req, res) => {
 // Menghapus data artwork
 const deleteArtworkController = async (req, res) => {
 	try {
-		const removedArtwork = await artworkSchema.remove({ _id: req.params.id });
+		const removedArtwork = await Artwork.remove({ _id: req.params.id });
 		res.json(removedArtwork);
 	} catch (err) {
 		return sendError(res, 400, 'Something went wrong');
