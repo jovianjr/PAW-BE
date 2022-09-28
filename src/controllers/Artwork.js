@@ -35,4 +35,20 @@ const findArtworkByIdController = async (req, res) => {
 	}
 };
 
-module.exports = { findArtworkController, findArtworkByIdController };
+//edit artwork
+const editArtwork = async (req,res) => {
+    try { 
+		const updatedPost = await artworkSchema.updateOne
+		(
+		  { _id : req.params.id },
+		  { $set: req.body }
+		)
+		res.json(updatedPost)
+	}
+	catch(err) 
+	{
+		  res.json({ message : err.message })
+	}
+}
+
+module.exports = { findArtworkController, findArtworkByIdController, editArtwork};
