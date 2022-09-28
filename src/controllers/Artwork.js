@@ -1,6 +1,7 @@
 const Artwork = require('@src/models/Artwork');
 const { sendError } = require('@src/helpers/response');
 
+// find all / by filter
 const findArtworkController = async (req, res) => {
 	const filter = {};
 
@@ -23,6 +24,7 @@ const findArtworkController = async (req, res) => {
 	}
 };
 
+// find by id
 const findArtworkByIdController = async (req, res) => {
 	try {
 		const data = await Artwork.findById(req.params.id).exec();
@@ -35,41 +37,43 @@ const findArtworkByIdController = async (req, res) => {
 	}
 };
 
-//edit artwork
-const editArtwork = async (req,res) => {
-    try { 
-		const updatedPost = await artworkSchema.updateOne
-		(
-		  { _id : req.params.id },
-		  { $set: req.body }
-		)
-		res.json(updatedPost)
+// edit artwork
+const editArtworkController = async (req, res) => {
+	try {
+		const updatedPost = await artworkSchema.updateOne(
+			{ _id: req.params.id },
+			{ $set: req.body }
+		);
+		res.json(updatedPost);
+	} catch (err) {
+		res.json({ message: err.message });
 	}
-	catch(err) 
-	{
-		  res.json({ message : err.message })
-	}
-}
-
-module.exports = { findArtworkController, findArtworkByIdController, editArtwork};
-
+};
 // menambahkan data artwork
-exports.newArtwrok = async (req, res) => {   
-    const artwork = new artworkSchema(req.body)
-    try {
-      const savedArtwork = await artwork.save()
-      res.json(savedArtwork)
-    } catch(err) {
-      res.json({ message : err.message })
-    }
-}
+const newArtworkController = async (req, res) => {
+	const artwork = new artworkSchema(req.body);
+	try {
+		const savedArtwork = await artwork.save();
+		res.json(savedArtwork);
+	} catch (err) {
+		res.json({ message: err.message });
+	}
+};
 
 // Menghapus data artwork
-exports.deleteArtwork = async (req, res) => { 
-    try {
-      const removedArtwork = await artworkSchema.remove({ _id : req.params.id })
-      res.json(removedArtwork)
-    } catch(err) {
-      res.json({ message : err.message })
-    }
-}
+const deleteArtworkController = async (req, res) => {
+	try {
+		const removedArtwork = await artworkSchema.remove({ _id: req.params.id });
+		res.json(removedArtwork);
+	} catch (err) {
+		res.json({ message: err.message });
+	}
+};
+
+module.exports = {
+	findArtworkController,
+	findArtworkByIdController,
+	editArtworkController,
+	newArtworkController,
+	deleteArtworkController,
+};
