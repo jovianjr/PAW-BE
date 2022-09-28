@@ -9,7 +9,7 @@
 
 ## Description
 
-Website ini merupakan salah satu website online exhibitions untuk menampilkan berbagai karya seni dua dimensi beserta pembuat karyanya. Membantu para user untuk merasakan pengalaman berkunjung ke art exhibition yang dapat di kunjungi dimanapun dan kapanpun. Selain itu, website ini juga dapat menambahkan karya seni dua dimensi melalui akses admin dan karya seni yang diterbitkan adalah karya yang telah lulus kualitas melalui tim kurator kami.
+Website ini merupakan salah satu website online exhibitions untuk menampilkan berbagai karya seni dua dimensi beserta pembuat karyanya. Membantu para user untuk merasakan pengalaman berkunjung ke art exhibition yang dapat di kunjungi di mana pun dan kapan pun. Selain itu, website ini juga dapat menambahkan karya seni dua dimensi melalui akses admin dan karya seni yang diterbitkan adalah karya yang telah lulus kualitas melalui tim kurator kami.
 
 ## API Documentation
 Please check [API References](https://documenter.getpostman.com/view/17403192/2s83Rwjb7c#1b444c49-cb52-48d0-a546-e70421c09cb5).
