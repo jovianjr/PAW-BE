@@ -52,3 +52,24 @@ const editArtwork = async (req,res) => {
 }
 
 module.exports = { findArtworkController, findArtworkByIdController, editArtwork};
+
+// menambahkan data artwork
+exports.newArtwrok = async (req, res) => {   
+    const artwork = new artworkSchema(req.body)
+    try {
+      const savedArtwork = await artwork.save()
+      res.json(savedArtwork)
+    } catch(err) {
+      res.json({ message : err.message })
+    }
+}
+
+// Menghapus data artwork
+exports.deleteArtwork = async (req, res) => { 
+    try {
+      const removedArtwork = await artworkSchema.remove({ _id : req.params.id })
+      res.json(removedArtwork)
+    } catch(err) {
+      res.json({ message : err.message })
+    }
+}
