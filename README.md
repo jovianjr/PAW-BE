@@ -3,13 +3,13 @@
 </h2>
 
 <p align="center">
-  Simple overview of use/purpose.
+  ... merupakan Online Exhibitions yang akan menampilkan berbagai karya seni beserta deskripsi dan pembuat karya
 </p>
 
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Website ini merupakan salah satu website online exhibitions untuk menampilkan berbagai karya seni dua dimensi beserta pembuat karyanya. Membantu para user untuk merasakan pengalaman berkunjung ke art exhibition yang dapat di kunjungi dimanapun dan kapanpun. Selain itu, website ini juga dapat menambahkan karya seni dua dimensi melalui akses admin dan karya seni yang diterbitkan adalah karya yang telah lulus kualitas melalui tim kurator kami.
 
 ## API Documentation
 Please check [API References](https://documenter.getpostman.com/view/17403192/2s83Rwjb7c#1b444c49-cb52-48d0-a546-e70421c09cb5).
@@ -48,3 +48,4 @@ yarn dev
 Nama  | NIM
 ------------- | -------------
 Alphonsus Jovian Joy Reynaldo  | 20/460539/TK/51128
+Adinda Luthfiah S              | 20/463587/TK/51579
