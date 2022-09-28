@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 // artwork schema
 const artworkSchema = new mongoose.Schema(
 	{
-		title: { type: String,required: true,},
-		img: {
+		title: { type: String, required: true },
+		imgSrc: {
 			type: String,
 			required: true,
 		},
 		description: {
-			type: String
+			type: String,
 		},
 		artist: {
 			type: String,
@@ -19,10 +19,10 @@ const artworkSchema = new mongoose.Schema(
 			type: Date,
 			required: true,
 		},
-		user_id:{
-			type : mongoose.ObjectId,
+		user_id: {
+			type: mongoose.ObjectId,
 			required: true,
-		}
+		},
 	},
 	{
 		timestamps: true,
