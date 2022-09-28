@@ -62,10 +62,10 @@ const newArtworkController = async (req, res) => {
 			imgSrc,
 			user_id: req.auth._id,
 		});
-		const savedArtwork = await artwork.save();
+		const data = await artwork.save();
 		return res.status(201).json({
 			message: 'success',
-			savedArtwork,
+			data,
 		});
 	} catch (err) {
 		console.log(err);
@@ -76,8 +76,14 @@ const newArtworkController = async (req, res) => {
 // Menghapus data artwork
 const deleteArtworkController = async (req, res) => {
 	try {
-		const removedArtwork = await Artwork.remove({ _id: req.params.id });
-		res.json(removedArtwork);
+		const data = await Artwork.remove({
+			_id: req.params.id,
+			user_id: req.auth._id,
+		});
+		return res.status(200).json({
+			message: 'success',
+			data,
+		});
 	} catch (err) {
 		return sendError(res, 400, 'Something went wrong');
 	}
