@@ -8,11 +8,12 @@ const {
 	editArtworkController,
 	deleteArtworkController,
 } = require('@src/controllers/artwork');
+const { authCheck } = require('@src/middleware/auth');
 
 router.get('/', findArtworkController);
 router.get('/:id', findArtworkByIdController);
-router.post('/', newArtworkController);
-router.patch('/', editArtworkController);
-router.delete('/', deleteArtworkController);
+router.post('/', authCheck, newArtworkController);
+router.patch('/:id', authCheck, editArtworkController);
+router.delete('/:id', authCheck, deleteArtworkController);
 
 module.exports = router;
