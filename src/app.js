@@ -9,11 +9,11 @@ const app = () => {
 
 	// router
 	const { AuthRouter, ArtworkRouter, UserRouter } = require('@src/routes');
-	app.use(authHandler);
 	app.get('/', LandingPage);
 	app.use('/auth', AuthRouter);
 	app.use('/artwork', ArtworkRouter);
 	app.use('/user', UserRouter);
+	app.use(authHandler);
 
 	// 404
 	app.use((req, res, next) => {
