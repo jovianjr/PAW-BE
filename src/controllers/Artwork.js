@@ -1,6 +1,7 @@
 const Artwork = require('@src/models/Artwork');
 const { sendError } = require('@src/helpers/response');
 
+// find all / by filter
 const findArtworkController = async (req, res) => {
 	const filter = {};
 
@@ -19,10 +20,12 @@ const findArtworkController = async (req, res) => {
 			data,
 		});
 	} catch (e) {
+		console.log(err);
 		return sendError(res, 400, 'Something went wrong');
 	}
 };
 
+// find by id
 const findArtworkByIdController = async (req, res) => {
 	try {
 		const data = await Artwork.findById(req.params.id).exec();
@@ -31,45 +34,81 @@ const findArtworkByIdController = async (req, res) => {
 			data,
 		});
 	} catch (e) {
+		console.log(err);
 		return sendError(res, 400, 'Something went wrong');
 	}
 };
 
-//edit artwork
-const editArtwork = async (req,res) => {
-    try { 
-		const updatedPost = await artworkSchema.updateOne
-		(
-		  { _id : req.params.id },
-		  { $set: req.body }
-		)
-		res.json(updatedPost)
-	}
-	catch(err) 
-	{
-		  res.json({ message : err.message })
-	}
-}
-
-module.exports = { findArtworkController, findArtworkByIdController, editArtwork};
-
 // menambahkan data artwork
-exports.newArtwrok = async (req, res) => {   
-    const artwork = new artworkSchema(req.body)
-    try {
-      const savedArtwork = await artwork.save()
-      res.json(savedArtwork)
-    } catch(err) {
-      res.json({ message : err.message })
-    }
-}
+const newArtworkController = async (req, res) => {
+	try {
+		const { title, description, artist, date_created, imgSrc } = req.body;
+		const artwork = new Artwork({
+			title,
+			description,
+			artist,
+			date_created,
+			imgSrc,
+			user_id: req.auth._id,
+		});
+		const data = await artwork.save();
+		return res.status(201).json({
+			message: 'success',
+			data,
+		});
+	} catch (err) {
+		console.log(err);
+		return sendError(res, 400, 'Something went wrong');
+	}
+};
+
+// edit artwork
+const editArtworkController = async (req, res) => {
+	try {
+		const { title, description, artist, date_created, imgSrc } = req.body;
+		const data = await Artwork.findOneAndUpdate(
+			{ _id: req.params.id, user_id: req.auth._id },
+			{
+				$set: {
+					title,
+					description,
+					artist,
+					date_created,
+					imgSrc,
+				},
+			}
+		);
+		return res.status(200).json({
+			message: 'success',
+			data,
+		});
+	} catch (err) {
+		console.log(err);
+		return sendError(res, 400, 'Something went wrong');
+	}
+};
 
 // Menghapus data artwork
-exports.deleteArtwork = async (req, res) => { 
-    try {
-      const removedArtwork = await artworkSchema.remove({ _id : req.params.id })
-      res.json(removedArtwork)
-    } catch(err) {
-      res.json({ message : err.message })
-    }
-}
+const deleteArtworkController = async (req, res) => {
+	try {
+		const data = await Artwork.remove({
+			_id: req.params.id,
+			user_id: req.auth._id,
+		});
+		return res.status(200).json({
+			message: 'success',
+			data: null,
+		});
+	} catch (err) {
+		console.log(err);
+		return sendError(res, 400, 'Something went wrong');
+	}
+};
+
+module.exports = {
+	findArtworkController,
+	findArtworkByIdController,
+	editArtworkController,
+	newArtworkController,
+	deleteArtworkController,
+};
