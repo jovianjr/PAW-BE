@@ -46,9 +46,10 @@ const editArtworkController = async (req, res) => {
 		);
 		res.json(updatedPost);
 	} catch (err) {
-		res.json({ message: err.message });
+		return sendError(res, 400, 'Something went wrong');
 	}
 };
+
 // menambahkan data artwork
 const newArtworkController = async (req, res) => {
 	const artwork = new artworkSchema(req.body);
@@ -56,7 +57,7 @@ const newArtworkController = async (req, res) => {
 		const savedArtwork = await artwork.save();
 		res.json(savedArtwork);
 	} catch (err) {
-		res.json({ message: err.message });
+		return sendError(res, 400, 'Something went wrong');
 	}
 };
 
@@ -66,7 +67,7 @@ const deleteArtworkController = async (req, res) => {
 		const removedArtwork = await artworkSchema.remove({ _id: req.params.id });
 		res.json(removedArtwork);
 	} catch (err) {
-		res.json({ message: err.message });
+		return sendError(res, 400, 'Something went wrong');
 	}
 };
 
