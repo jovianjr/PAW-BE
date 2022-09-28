@@ -20,6 +20,7 @@ const findArtworkController = async (req, res) => {
 			data,
 		});
 	} catch (e) {
+		console.log(err);
 		return sendError(res, 400, 'Something went wrong');
 	}
 };
@@ -33,19 +34,7 @@ const findArtworkByIdController = async (req, res) => {
 			data,
 		});
 	} catch (e) {
-		return sendError(res, 400, 'Something went wrong');
-	}
-};
-
-// edit artwork
-const editArtworkController = async (req, res) => {
-	try {
-		const updatedPost = await Artwork.updateOne(
-			{ _id: req.params.id },
-			{ $set: req.body }
-		);
-		res.json(updatedPost);
-	} catch (err) {
+		console.log(err);
 		return sendError(res, 400, 'Something went wrong');
 	}
 };
@@ -73,6 +62,32 @@ const newArtworkController = async (req, res) => {
 	}
 };
 
+// edit artwork
+const editArtworkController = async (req, res) => {
+	try {
+		const { title, description, artist, date_created, imgSrc } = req.body;
+		const data = await Artwork.findOneAndUpdate(
+			{ _id: req.params.id, user_id: req.auth._id },
+			{
+				$set: {
+					title,
+					description,
+					artist,
+					date_created,
+					imgSrc,
+				},
+			}
+		);
+		return res.status(200).json({
+			message: 'success',
+			data,
+		});
+	} catch (err) {
+		console.log(err);
+		return sendError(res, 400, 'Something went wrong');
+	}
+};
+
 // Menghapus data artwork
 const deleteArtworkController = async (req, res) => {
 	try {
@@ -82,9 +97,10 @@ const deleteArtworkController = async (req, res) => {
 		});
 		return res.status(200).json({
 			message: 'success',
-			data,
+			data: null,
 		});
 	} catch (err) {
+		console.log(err);
 		return sendError(res, 400, 'Something went wrong');
 	}
 };
