@@ -32,7 +32,7 @@ const verifyNodemailer = async () => {
 	});
 };
 
-const sendMail = async (transport, params) => {
+const sendMail = async (params) => {
 	mailOptions = {
 		from: `PAW <${process.env.EMAIL_FROM}>`,
 		to: params.to,
@@ -48,7 +48,7 @@ const sendMail = async (transport, params) => {
                 </div>`,
 	};
 
-	await transport.sendMail(mailOptions);
+	await transporter.sendMail(mailOptions);
 };
 
 module.exports = { transporter, sendMail, verifyNodemailer };
