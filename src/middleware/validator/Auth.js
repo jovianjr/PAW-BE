@@ -42,4 +42,21 @@ authValidator.register = [
 
 authValidator.login = [required('identity'), required('password'), handler];
 
+authValidator.resetPassword = [
+	required('password')
+		.isLength({ min: 8 })
+		.withMessage('Password must contain at least 8 characters')
+		.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z-_!@#$%^&*]{8,}$/, 'i')
+		.withMessage(
+			'Password should contain at least 1 uppercase, 1 lowercase, and 1 numeric'
+		),
+	required('confirmPassword').custom((value, { req }) => {
+		if (value !== req.body.password) {
+			throw new Error('password and confirmPassword does not match');
+		}
+		return true;
+	}),
+	handler,
+];
+
 module.exports = authValidator;
