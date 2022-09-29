@@ -1,9 +1,9 @@
 <h2 align="center">
-  Project Title
+  PAW (Pieces of ArtWork)
 </h2>
 
 <p align="center">
-  ... merupakan Online Exhibitions yang akan menampilkan berbagai karya seni beserta deskripsi dan pembuat karya
+  PAW merupakan Online Exhibitions yang akan menampilkan berbagai karya seni beserta deskripsi dan pembuat karya
 </p>
 
 
@@ -49,3 +49,4 @@ Nama  | NIM
 ------------- | -------------
 Alphonsus Jovian Joy Reynaldo  | 20/460539/TK/51128
 Adinda Luthfiah S              | 20/463587/TK/51579
+Aulia Nur Fajriyah    | 20/456360/TK/50490
