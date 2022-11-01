@@ -54,6 +54,9 @@ yarn
 yarn dev
 ```
 
+## Contributing
+Please see our [contributing.md](https://github.com/jovianjr/PAW-BE/blob/dev/CONTRIBUTING.md).
+
 ## Anggota Kelompok 7
 Nama  | NIM
 ------------- | -------------
