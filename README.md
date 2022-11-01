@@ -6,13 +6,20 @@
   PAW merupakan Online Exhibitions yang akan menampilkan berbagai karya seni beserta deskripsi dan pembuat karya
 </p>
 
-
 ## Description
 
 <p align="justify">
 PAW merupakan Online Exhibitions yang akan menampilkan berbagai karya seni beserta deskripsi dan pembuat karya
 PAW merupakan salah satu website online exhibitions untuk menampilkan berbagai karya seni dua dimensi beserta pembuat karyanya. Membantu para user untuk merasakan pengalaman berkunjung ke art exhibition yang dapat di kunjungi di mana pun dan kapan pun. Selain itu, user juga dapat menambahkan karya seni dua dimensi miliknya hanya dengan mendaftar pada website ini.
 </p>
+
+## Related Repository
+- [Frontend Repo](https://github.com/jovianjr/paw-fe) 
+- [Backend Repo](https://github.com/jovianjr/paw-be) (current)
+
+
+## Link
+link slide presentasi: [di sini](https://drive.google.com/file/d/1zHXKU9QbTYeTJSE-oNfBOWBVvJmC_4fQ)  
 
 ## API Documentation
 Please check [API References](https://documenter.getpostman.com/view/17403192/2s83Rwjb7c#1b444c49-cb52-48d0-a546-e70421c09cb5).
