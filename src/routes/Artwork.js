@@ -7,8 +7,8 @@ const {
 	newArtworkController,
 	editArtworkController,
 	deleteArtworkController,
-} = require('@src/controllers/artwork');
-const { authCheck } = require('@src/middleware/auth');
+} = require('../controllers/artwork');
+const { authCheck } = require('../middleware/auth');
 
 router.get('/', findArtworkController);
 router.get('/:id', findArtworkByIdController);

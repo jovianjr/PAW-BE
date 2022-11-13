@@ -1,5 +1,5 @@
 const { expressjwt: expressJwt } = require('express-jwt');
-const { sendError } = require('@src/helpers/response');
+const { sendError } = require('../../helpers/response');
 
 const authCheck = expressJwt({
 	secret: process.env.JWT_SECRET,

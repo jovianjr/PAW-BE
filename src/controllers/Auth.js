@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
-const User = require('@src/models/User');
+const User = require('../models/User');
 const _ = require('lodash');
-const { sendError } = require('@src/helpers/response');
-const { sendMail } = require('@src/config/mail');
+const { sendError } = require('../helpers/response');
+const { sendMail } = require('../config/mail');
 
 const loginController = (req, res) => {
 	const { identity, password } = req.body;

@@ -4,7 +4,7 @@ const router = express.Router();
 const {
 	findUserController,
 	findByUsernameController,
-} = require('@src/controllers/user');
+} = require('../controllers/user');
 
 router.get('/search/:name', findUserController);
 router.get('/:username', findByUsernameController);

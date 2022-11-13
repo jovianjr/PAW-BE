@@ -1,5 +1,5 @@
-const User = require('@src/models/User');
-const { sendError } = require('@src/helpers/response');
+const User = require('../models/User');
+const { sendError } = require('../helpers/response');
 
 const findUserController = async (req, res) => {
 	try {

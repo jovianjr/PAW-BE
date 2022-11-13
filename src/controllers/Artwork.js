@@ -1,5 +1,5 @@
-const Artwork = require('@src/models/Artwork');
-const { sendError } = require('@src/helpers/response');
+const Artwork = require('../models/Artwork');
+const { sendError } = require('../helpers/response');
 
 // find all / by filter
 const findArtworkController = async (req, res) => {
