@@ -1,6 +1,6 @@
 const cors = require('cors');
 const express = require('express');
-const { authHandler } = require('./middleware/auth');
+// const { authHandler } = require('./middleware/auth');
 
 const app = () => {
 	const app = express();
@@ -8,12 +8,12 @@ const app = () => {
 	app.use(express.json());
 
 	// router
-	const { AuthRouter, ArtworkRouter, UserRouter } = require('./routes');
+	// const { AuthRouter, ArtworkRouter, UserRouter } = require('./routes');
 	app.get('/', LandingPage);
-	app.use('/auth', AuthRouter);
-	app.use('/artwork', ArtworkRouter);
-	app.use('/user', UserRouter);
-	app.use(authHandler);
+	// app.use('/auth', AuthRouter);
+	// app.use('/artwork', ArtworkRouter);
+	// app.use('/user', UserRouter);
+	// app.use(authHandler);
 
 	// 404
 	app.use((req, res, next) => {
