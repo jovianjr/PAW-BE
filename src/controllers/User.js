@@ -14,8 +14,9 @@ const findUserController = async (req, res) => {
 			message: 'success',
 			data,
 		});
-	} catch (e) {
-		return sendError(res, 400, 'Something went wrong');
+	} catch (err) {
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 
@@ -29,8 +30,9 @@ const findByUsernameController = async (req, res) => {
 			message: 'success',
 			data,
 		});
-	} catch (e) {
-		return sendError(res, 400, 'Something went wrong');
+	} catch (err) {
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 
