@@ -7,7 +7,7 @@ const {
 	newArtworkController,
 	editArtworkController,
 	deleteArtworkController,
-} = require('../controllers/artwork');
+} = require('../controllers/Artwork');
 const { authCheck } = require('../middleware/auth');
 
 router.get('/', findArtworkController);

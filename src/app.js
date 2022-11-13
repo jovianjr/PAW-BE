@@ -8,11 +8,11 @@ const app = () => {
 	app.use(express.json());
 
 	// router
-	const { AuthRouter } = require('./routes');
+	const { AuthRouter, ArtworkRouter, UserRouter } = require('./routes');
 	app.get('/', LandingPage);
 	app.use('/auth', AuthRouter);
-	// app.use('/artwork', ArtworkRouter);
-	// app.use('/user', UserRouter);
+	app.use('/artwork', ArtworkRouter);
+	app.use('/user', UserRouter);
 	app.use(authHandler);
 
 	// 404
