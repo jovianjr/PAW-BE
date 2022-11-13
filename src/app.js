@@ -8,9 +8,9 @@ const app = () => {
 	app.use(express.json());
 
 	// router
-	// const { AuthRouter, ArtworkRouter, UserRouter } = require('./routes');
+	const { AuthRouter } = require('./routes');
 	app.get('/', LandingPage);
-	// app.use('/auth', AuthRouter);
+	app.use('/auth', AuthRouter);
 	// app.use('/artwork', ArtworkRouter);
 	// app.use('/user', UserRouter);
 	app.use(authHandler);
