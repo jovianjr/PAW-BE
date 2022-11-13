@@ -1,5 +1,3 @@
-require('module-alias/register'); // module alias
-
 const dotenv = require('dotenv');
 const connectDB = require('./src/config/database');
 const { verifyNodemailer } = require('./src/config/mail');
