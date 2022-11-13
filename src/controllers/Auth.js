@@ -11,6 +11,7 @@ const loginController = (req, res) => {
 		$or: [{ email: identity }, { username: identity }],
 	}).exec((err, user) => {
 		if (err || !user || !user.authenticate(password)) {
+			console.log(err);
 			return sendError(res, 400, 'You have entered an invalid credentials');
 		}
 

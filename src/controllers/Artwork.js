@@ -19,9 +19,9 @@ const findArtworkController = async (req, res) => {
 			message: 'success',
 			data,
 		});
-	} catch (e) {
+	} catch (err) {
 		console.log(err);
-		return sendError(res, 400, 'Something went wrong');
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 
@@ -33,9 +33,9 @@ const findArtworkByIdController = async (req, res) => {
 			message: 'success',
 			data,
 		});
-	} catch (e) {
-		console.log(err);
-		return sendError(res, 400, 'Something went wrong');
+	} catch (err) {
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 
@@ -43,6 +43,10 @@ const findArtworkByIdController = async (req, res) => {
 const newArtworkController = async (req, res) => {
 	try {
 		const { title, description, artist, date_created, imgSrc } = req.body;
+		if (!title || !description || !artist || !date_created || !imgSrc) {
+			throw new Error('You must fill in all of the required fields');
+		}
+
 		const artwork = new Artwork({
 			title,
 			description,
@@ -57,8 +61,8 @@ const newArtworkController = async (req, res) => {
 			data,
 		});
 	} catch (err) {
-		console.log(err);
-		return sendError(res, 400, 'Something went wrong');
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 
@@ -83,8 +87,8 @@ const editArtworkController = async (req, res) => {
 			data,
 		});
 	} catch (err) {
-		console.log(err);
-		return sendError(res, 400, 'Something went wrong');
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 
@@ -100,8 +104,8 @@ const deleteArtworkController = async (req, res) => {
 			data: null,
 		});
 	} catch (err) {
-		console.log(err);
-		return sendError(res, 400, 'Something went wrong');
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
 

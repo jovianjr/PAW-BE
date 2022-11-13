@@ -7,8 +7,8 @@ const {
 	activationController,
 	forgotPasswordController,
 	resetPasswordController,
-} = require('../controllers/auth');
-const authValidator = require('../middleware/validator/auth');
+} = require('../controllers/Auth');
+const authValidator = require('../middleware/validator/Auth');
 
 router.post('/login', authValidator.login, loginController);
 router.post('/register', authValidator.register, registerController);
