@@ -14,3 +14,5 @@ app().listen(process.env.PORT, async () => {
 	verifyNodemailer();
 	console.log(`Server running on port ${process.env.PORT}`);
 });
+
+module.exports = app;
