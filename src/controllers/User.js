@@ -36,4 +36,40 @@ const findByUsernameController = async (req, res) => {
 	}
 };
 
-module.exports = { findUserController, findByUsernameController };
+const updateUserController = async (req, res) => {
+	try {
+		const { image, name, title, bio, instagram, twitter, youtube, facebook } =
+			req.body;
+
+		const data = await User.findOneAndUpdate(
+			{ _id: req.auth._id },
+			{
+				$set: {
+					image,
+					name,
+					title,
+					bio,
+					instagram,
+					twitter,
+					youtube,
+					facebook,
+				},
+			}
+		);
+
+		const result = await User.findOne({ _id: req.auth._id });
+
+		return res.status(200).json({
+			message: 'update user success',
+			data: result,
+		});
+	} catch (err) {
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
+	}
+};
+module.exports = {
+	findUserController,
+	findByUsernameController,
+	updateUserController,
+};
