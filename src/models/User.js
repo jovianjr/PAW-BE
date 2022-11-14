@@ -12,10 +12,40 @@ const userSchema = new mongoose.Schema(
 			unique: true,
 			lowercase: true,
 		},
+		image: {
+			type: String,
+			trim: true,
+			required: true,
+			default: '/images/profile-placeholder.png',
+		},
 		name: {
 			type: String,
 			trim: true,
 			required: true,
+		},
+		title: {
+			type: String,
+			trim: true,
+		},
+		bio: {
+			type: String,
+			trim: true,
+		},
+		instagram: {
+			type: String,
+			trim: true,
+		},
+		twitter: {
+			type: String,
+			trim: true,
+		},
+		youtube: {
+			type: String,
+			trim: true,
+		},
+		facebook: {
+			type: String,
+			trim: true,
 		},
 		salt: String,
 		hashed_password: {
