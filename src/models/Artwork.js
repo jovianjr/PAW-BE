@@ -3,24 +3,32 @@ const mongoose = require('mongoose');
 // artwork schema
 const artworkSchema = new mongoose.Schema(
 	{
-		title: { type: String, required: true },
 		imgSrc: {
 			type: String,
 			required: true,
 		},
+		slug: { type: String, required: true },
+		title: { type: String, required: true },
 		description: {
 			type: String,
 		},
 		artist: {
 			type: String,
-			required: true,
+			trim: true,
 		},
+		genre: [
+			{
+				type: String,
+				trim: true,
+			},
+		],
 		date_created: {
 			type: Date,
 			required: true,
 		},
 		user_id: {
 			type: mongoose.ObjectId,
+			ref: 'User',
 			required: true,
 		},
 	},

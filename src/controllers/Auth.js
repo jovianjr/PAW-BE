@@ -60,13 +60,13 @@ const registerController = (req, res) => {
 						Please click the button bellow to active your account
 					</p>
 					<a
-						href="http://localhost:${process.env.PORT}/auth/activate/${token}"
+						href="${process.env.BASE_URL}/auth/activate/${token}"
 						style="padding: 5px 10px; background-color: #0098ff; text-decoration: none; color: white; border-radius: 10px"
 						>Activate</a
 					>
 					<p style="color: #0f1319; margin: 30px 0 20px; font-size: 14px">
 						or click the following link <br /><br />
-						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="http://localhost:${process.env.PORT}/auth/activate/${token}"> http://localhost:${process.env.PORT}/auth/activate/${token} </a>
+						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="${process.env.BASE_URL}/auth/activate/${token}"> ${process.env.BASE_URL}/auth/activate/${token} </a>
 					</p>
 					<p style="color: #000; font-size: 12px; font-style: italic">This link will expired after 1 hours</p>
 					`,
@@ -157,13 +157,13 @@ const forgotPasswordController = (req, res) => {
 						Please click the button bellow to Reset your account password
 					</p>
 					<a
-						href="http://localhost:${process.env.PORT}/auth/reset/${token}"
+						href="${process.env.BASE_URL}/auth/reset/${token}"
 						style="padding: 5px 10px; background-color: #0098ff; text-decoration: none; color: white; border-radius: 10px"
 						>Reset password</a
 					>
 					<p style="color: #0f1319; margin: 30px 0 20px; font-size: 14px">
 						or click the following link <br /><br />
-						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="http://localhost:${process.env.PORT}/auth/reset/${token}"> http://localhost:${process.env.PORT}/auth/reset/${token} </a>
+						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="${process.env.BASE_URL}/auth/reset/${token}"> ${process.env.BASE_URL}/auth/reset/${token} </a>
 					</p>
 					<p style="color: #000; font-size: 12px; font-style: italic">This link will expired after 1 hours</p>
 					`,
