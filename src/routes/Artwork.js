@@ -4,6 +4,7 @@ const router = express.Router();
 const {
 	findArtworkController,
 	findArtworkByIdController,
+	findArtworkBySlugController,
 	newArtworkController,
 	editArtworkController,
 	deleteArtworkController,
@@ -12,6 +13,7 @@ const { authCheck } = require('../middleware/auth');
 
 router.get('/', findArtworkController);
 router.get('/:id', findArtworkByIdController);
+router.get('/slug/:slug', findArtworkBySlugController);
 router.post('/', authCheck, newArtworkController);
 router.patch('/:id', authCheck, editArtworkController);
 router.delete('/:id', authCheck, deleteArtworkController);
