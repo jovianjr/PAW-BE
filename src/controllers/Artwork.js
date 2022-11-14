@@ -6,6 +6,7 @@ const findArtworkController = async (req, res) => {
 	const filter = {};
 
 	// if any filter
+	if (req.query.title) filter.title = new RegExp(req.query.title, 'i');
 	if (req.query.artist) filter.artist = req.query.artist;
 	if (req.query.user_id) filter.user_id = req.query.user_id;
 
