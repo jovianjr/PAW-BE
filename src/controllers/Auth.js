@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const _ = require('lodash');
+const { CustomError } = require('../helpers/exception');
 const { sendError } = require('../helpers/response');
 const { sendMail } = require('../config/mail');
 
@@ -78,7 +79,7 @@ const registerController = (req, res) => {
 			});
 		} catch (e) {
 			console.log(e);
-			return sendError(res, 400, 'Something went wrong');
+			return sendError(res, 400, 'Something went wrong', e.message);
 		}
 	});
 };
@@ -132,7 +133,7 @@ const activationController = (req, res) => {
 		});
 	} catch (e) {
 		console.log(e);
-		return sendError(res, 400, 'Something went wrong');
+		return sendError(res, 400, 'Something went wrong', e.message);
 	}
 };
 
@@ -175,7 +176,7 @@ const forgotPasswordController = (req, res) => {
 			});
 		} catch (e) {
 			console.log(e);
-			return sendError(res, 400, 'Something went wrong');
+			return sendError(res, 400, 'Something went wrong', e.message);
 		}
 	});
 };
@@ -186,17 +187,16 @@ const resetPasswordController = (req, res) => {
 	try {
 		// verify token
 		jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-			if (err) {
-				return sendError(
-					res,
-					400,
-					'Reset password error, invalid / expired token'
-				);
-			}
+			if (err)
+				throw CustomError('Reset password error, invalid / expired token', 498);
 		});
 
 		// decode token
-		const { _id } = jwt.decode(token);
+		const decodedToken = jwt.decode(token);
+		if (!decodedToken)
+			throw CustomError('Reset password error, invalid / expired token', 498);
+
+		const { _id } = decodedToken;
 
 		User.findOne({
 			$or: [{ _id }],
@@ -219,7 +219,35 @@ const resetPasswordController = (req, res) => {
 		});
 	} catch (e) {
 		console.log(e);
-		return sendError(res, 400, 'Something went wrong');
+		return sendError(res, e.code ?? 400, 'Something went wrong', e.message);
+	}
+};
+
+const resetPasswordCheckController = async (req, res) => {
+	const { token } = req.params;
+	try {
+		// verify token
+		jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+			if (err)
+				throw CustomError('Reset password error, invalid / expired token', 498);
+		});
+
+		// decode token
+		const decodedToken = jwt.decode(token);
+		if (!decodedToken)
+			throw CustomError('Reset password error, invalid / expired token', 498);
+
+		const { _id } = decodedToken;
+
+		const user = await User.findById(_id).exec();
+
+		return res.json({
+			message: 'success',
+			data: user,
+		});
+	} catch (e) {
+		console.log(e);
+		return sendError(res, e.code ?? 400, 'Something went wrong', e.message);
 	}
 };
 
@@ -228,5 +256,6 @@ module.exports = {
 	registerController,
 	activationController,
 	forgotPasswordController,
+	resetPasswordCheckController,
 	resetPasswordController,
 };
