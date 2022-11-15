@@ -1,6 +1,6 @@
 // error response template
 const CustomError = (message, code) => {
-	const error = new Error('Reset password error, invalid / expired token');
+	const error = new Error(message ?? 'Something went wrong');
 	error.code = code;
 
 	return error;

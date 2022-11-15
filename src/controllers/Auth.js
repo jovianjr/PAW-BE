@@ -61,13 +61,13 @@ const registerController = (req, res) => {
 						Please click the button bellow to active your account
 					</p>
 					<a
-						href="${process.env.BASE_URL}/auth/activate/${token}"
+						href="${process.env.CLIENT_URL}/activate?token=${token}"
 						style="padding: 5px 10px; background-color: #0098ff; text-decoration: none; color: white; border-radius: 10px"
 						>Activate</a
 					>
 					<p style="color: #0f1319; margin: 30px 0 20px; font-size: 14px">
 						or click the following link <br /><br />
-						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="${process.env.BASE_URL}/auth/activate/${token}"> ${process.env.BASE_URL}/auth/activate/${token} </a>
+						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="${process.env.CLIENT_URL}/activate?token=${token}"> ${process.env.CLIENT_URL}/activate?token=${token} </a>
 					</p>
 					<p style="color: #000; font-size: 12px; font-style: italic">This link will expired after 1 hours</p>
 					`,
@@ -89,14 +89,16 @@ const activationController = (req, res) => {
 	try {
 		//verify tokens
 		jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-			if (err) {
-				console.log('Activation error');
-				return sendError(res, 400, 'Activation error, invalid / expired token');
-			}
+			if (err)
+				throw CustomError('Activation error, invalid / expired token', 498);
 		});
 
 		// decode token
-		const { username, name, email, password } = jwt.decode(token);
+		const decodedToken = jwt.decode(token);
+		if (!decodedToken)
+			throw CustomError('Activation error, invalid / expired token', 498);
+
+		const { username, name, email, password } = decodedToken;
 
 		User.findOne({
 			$or: [{ email }, { username }],
@@ -133,7 +135,7 @@ const activationController = (req, res) => {
 		});
 	} catch (e) {
 		console.log(e);
-		return sendError(res, 400, 'Something went wrong', e.message);
+		return sendError(res, e.code ?? 400, 'Something went wrong', e.message);
 	}
 };
 
@@ -158,13 +160,13 @@ const forgotPasswordController = (req, res) => {
 						Please click the button bellow to Reset your account password
 					</p>
 					<a
-						href="${process.env.BASE_URL}/auth/reset/${token}"
+						href="${process.env.CLIENT_URL}/reset-password?token=${token}"
 						style="padding: 5px 10px; background-color: #0098ff; text-decoration: none; color: white; border-radius: 10px"
 						>Reset password</a
 					>
 					<p style="color: #0f1319; margin: 30px 0 20px; font-size: 14px">
 						or click the following link <br /><br />
-						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="${process.env.BASE_URL}/auth/reset/${token}"> ${process.env.BASE_URL}/auth/reset/${token} </a>
+						<a style="font-size: 12px; text-decoration: none; word-break: break-all" href="${process.env.CLIENT_URL}/reset-password?token=${token}"> ${process.env.CLIENT_URL}/reset-password?token=${token} </a>
 					</p>
 					<p style="color: #000; font-size: 12px; font-style: italic">This link will expired after 1 hours</p>
 					`,
