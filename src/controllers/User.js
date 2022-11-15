@@ -36,6 +36,20 @@ const findByUsernameController = async (req, res) => {
 	}
 };
 
+const getCurrentUserController = async (req, res) => {
+	try {
+		const result = await User.findOne({ _id: req.auth._id });
+
+		return res.status(200).json({
+			message: 'success',
+			data: result,
+		});
+	} catch (err) {
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
+	}
+};
+
 const updateUserController = async (req, res) => {
 	try {
 		const { image, name, title, bio, instagram, twitter, youtube, facebook } =
@@ -68,8 +82,10 @@ const updateUserController = async (req, res) => {
 		return sendError(res, 400, 'Something went wrong', err.message);
 	}
 };
+
 module.exports = {
 	findUserController,
 	findByUsernameController,
+	getCurrentUserController,
 	updateUserController,
 };
