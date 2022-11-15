@@ -223,10 +223,40 @@ const resetPasswordController = (req, res) => {
 	}
 };
 
+const resetPasswordCheckController = async (req, res) => {
+	const { token } = req.params;
+	try {
+		// verify token
+		jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+			if (err) {
+				return sendError(
+					res,
+					400,
+					'Reset password error, invalid / expired token'
+				);
+			}
+		});
+
+		// decode token
+		const { _id } = jwt.decode(token);
+
+		const user = await User.findById(_id).exec();
+
+		return res.json({
+			message: 'success',
+			data: user,
+		});
+	} catch (e) {
+		console.log(e);
+		return sendError(res, 400, 'Something went wrong');
+	}
+};
+
 module.exports = {
 	loginController,
 	registerController,
 	activationController,
 	forgotPasswordController,
+	resetPasswordCheckController,
 	resetPasswordController,
 };
