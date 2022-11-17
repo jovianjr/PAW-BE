@@ -9,6 +9,7 @@ const findArtworkController = async (req, res) => {
 	if (req.query.title) filter.title = new RegExp(req.query.title, 'i');
 	if (req.query.artist) filter.artist = req.query.artist;
 	if (req.query.user_id) filter.user_id = req.query.user_id;
+	if (req.query.username) filter.username = req.query.username;
 
 	try {
 		const data = await Artwork.find(filter)
