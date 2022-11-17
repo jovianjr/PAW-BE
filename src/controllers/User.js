@@ -24,7 +24,9 @@ const findByUsernameController = async (req, res) => {
 	try {
 		const data = await User.findOne({
 			username: req.params.username,
-		});
+		}).select(
+			'_id username email image name createdAt bio facebook instagram title twitter youtube'
+		);
 
 		return res.json({
 			message: 'success',
@@ -38,7 +40,9 @@ const findByUsernameController = async (req, res) => {
 
 const getCurrentUserController = async (req, res) => {
 	try {
-		const result = await User.findOne({ _id: req.auth._id });
+		const result = await User.findOne({ _id: req.auth._id }).select(
+			'_id username email image name createdAt bio facebook instagram title twitter youtube'
+		);
 
 		return res.status(200).json({
 			message: 'success',
@@ -71,7 +75,9 @@ const updateUserController = async (req, res) => {
 			}
 		);
 
-		const result = await User.findOne({ _id: req.auth._id });
+		const result = await User.findOne({ _id: req.auth._id }).select(
+			'_id username email image name createdAt bio facebook instagram title twitter youtube'
+		);
 
 		return res.status(200).json({
 			message: 'update user success',
