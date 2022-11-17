@@ -13,7 +13,7 @@ const findArtworkController = async (req, res) => {
 
 	try {
 		const data = await Artwork.find(filter)
-			.select('title img date_created createdAt imgSrc genre')
+			.select('title img date_created createdAt imgSrc genre slug')
 			.populate('user_id', 'name')
 			.sort(req.query.sort)
 			.exec();
