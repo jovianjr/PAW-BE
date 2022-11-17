@@ -24,7 +24,7 @@ const findByUsernameController = async (req, res) => {
 	try {
 		const data = await User.findOne({
 			username: req.params.username,
-		}).select('username name');
+		}).select('username name image');
 
 		return res.json({
 			message: 'success',
