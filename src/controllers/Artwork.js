@@ -9,10 +9,11 @@ const findArtworkController = async (req, res) => {
 	if (req.query.title) filter.title = new RegExp(req.query.title, 'i');
 	if (req.query.artist) filter.artist = req.query.artist;
 	if (req.query.user_id) filter.user_id = req.query.user_id;
+	if (req.query.genre) filter.genre = req.query.genre;
 
 	try {
 		const data = await Artwork.find(filter)
-			.select('title img date_created createdAt imgSrc')
+			.select('title img date_created createdAt imgSrc genre')
 			.populate('user_id', 'name')
 			.sort(req.query.sort)
 			.exec();
