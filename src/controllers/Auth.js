@@ -21,6 +21,8 @@ const loginController = (req, res) => {
 			expiresIn: '3h',
 		});
 
+		user.__v = undefined;
+		user.updatedAt = undefined;
 		user.hashed_password = undefined;
 		user.salt = undefined;
 		return res.json({
