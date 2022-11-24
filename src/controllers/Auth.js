@@ -255,6 +255,36 @@ const resetPasswordCheckController = async (req, res) => {
 	}
 };
 
+const updatePasswordController = async (req, res) => {
+	const { currentPassword, newPassword } = req.body;
+
+	try {
+		const result = await User.findOne({ _id: req.auth._id }).exec();
+		if (!result.authenticate(currentPassword)) {
+			return sendError(res, 400, 'You have entered an invalid credentials');
+		}
+
+		if (!result) return sendError(res, 400, `User does not exist`);
+
+		// update password
+		user = _.extend(result, { password: newPassword });
+		user.save((err, user) => {
+			if (err) return sendError(res, 400, 'Something went wrong');
+			else {
+				user.hashed_password = undefined;
+				user.salt = undefined;
+				return res.json({
+					message: 'Reset Password success',
+					data: null,
+				});
+			}
+		});
+	} catch (err) {
+		console.log(err.message);
+		return sendError(res, 400, 'Something went wrong', err.message);
+	}
+};
+
 module.exports = {
 	loginController,
 	registerController,
@@ -262,4 +292,5 @@ module.exports = {
 	forgotPasswordController,
 	resetPasswordCheckController,
 	resetPasswordController,
+	updatePasswordController,
 };
