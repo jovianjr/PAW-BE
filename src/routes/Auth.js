@@ -8,8 +8,10 @@ const {
 	forgotPasswordController,
 	resetPasswordController,
 	resetPasswordCheckController,
+	updatePasswordController,
 } = require('../controllers/Auth');
 const authValidator = require('../middleware/validator/Auth');
+const { authCheck } = require('../middleware/auth');
 
 router.post('/login', authValidator.login, loginController);
 router.post('/register', authValidator.register, registerController);
@@ -20,6 +22,12 @@ router.patch(
 	'/reset-password/:token',
 	authValidator.resetPassword,
 	resetPasswordController
+);
+router.patch(
+	'/update-password',
+	authCheck,
+	authValidator.updatePassword,
+	updatePasswordController
 );
 
 module.exports = router;
