@@ -104,7 +104,8 @@ const newArtworkController = async (req, res) => {
 // edit artwork
 const editArtworkController = async (req, res) => {
 	try {
-		const { title, description, artist, date_created, imgSrc } = req.body;
+		const { title, description, artist, date_created, imgSrc, genre } =
+			req.body;
 		const data = await Artwork.findOneAndUpdate(
 			{ _id: req.params.id, user_id: req.auth._id },
 			{
@@ -114,6 +115,7 @@ const editArtworkController = async (req, res) => {
 					artist,
 					date_created,
 					imgSrc,
+					genre,
 				},
 			}
 		);
