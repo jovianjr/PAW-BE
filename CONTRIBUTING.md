@@ -1,8 +1,8 @@
 # Branching
 
 ## Main Branch
-- `dev`: development, “integration branch”
-- `prod`: production-ready state
+- `development`: development, “integration branch”
+- `production`: production-ready state
 
 ## Supporting Branch
 - `Feature` : menambahkan fitur baru
