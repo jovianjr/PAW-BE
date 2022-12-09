@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/55451337/206634498-ad546863-3f23-4fe7-841c-56c2dfac9aad.png"  />
+</div>
+
 <h1 align="center">
   PAW: Pieces of ArtWork
 </h1>
@@ -19,7 +23,9 @@ PAW merupakan salah satu website online exhibitions untuk menampilkan berbagai k
 
 
 ## Link
-link slide presentasi: [di sini](https://drive.google.com/file/d/1zHXKU9QbTYeTJSE-oNfBOWBVvJmC_4fQ)  
+- link slide presentasi: [di sini](https://drive.google.com/file/d/1zHXKU9QbTYeTJSE-oNfBOWBVvJmC_4fQ) 
+- Front End: https://pieces-of-artwork.netlify.app
+- Back End: https://api-pieces-of-artwork.vercel.app 
 
 ## API Documentation
 Please check [API References](https://documenter.getpostman.com/view/17403192/2s83Rwjb7c#1b444c49-cb52-48d0-a546-e70421c09cb5).
